@@ -1,0 +1,28 @@
+<svg id="Group_47" data-name="Group 47" xmlns="http://www.w3.org/2000/svg" width="22.347" height="18" viewBox="0 0 22.347 18">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #bdd9bf;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Rectangle_38" data-name="Rectangle 38" class="cls-1">
+    <rect class="cls-3" width="22" height="18" rx="4"/>
+    <rect class="cls-4" x="1" y="1" width="20" height="16" rx="3"/>
+  </g>
+  <line id="Line_16" data-name="Line 16" class="cls-2" x2="9.596" y2="4.798" transform="translate(1.813 6.702)"/>
+  <line id="Line_17" data-name="Line 17" class="cls-2" x1="9.596" y2="4.798" transform="translate(11.409 6.702)"/>
+</svg>

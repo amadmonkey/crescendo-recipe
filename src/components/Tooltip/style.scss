@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+.tooltip {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    &.dark {
+        > div {
+            background-color: $charcoal;
+            color: $text-light;
+            &::after {
+                background-color: $charcoal;
+            }
+        }
+    }
+    > div {
+        pointer-events: none;
+        position: absolute;
+        transition: 0.2s;
+        opacity: 0;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+        font-weight: bold;
+        padding: 5px;
+        background-color: $text-light;
+        border-radius: 5px;
+        box-shadow: $shadow-default;
+        &.active {
+            top: -35px;
+            opacity: 1;
+        }
+        > span {
+            display: block;
+            white-space: nowrap;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            background-color: $white;
+            bottom: -5px;
+            border-radius: 2px;
+            z-index: -1;
+            box-shadow: 4px 4px 4px 1px #00000040;
+        }
+    }
+}

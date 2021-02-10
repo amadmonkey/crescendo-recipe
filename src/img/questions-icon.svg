@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fbfbfb;
+        stroke-width: 5px;
+      }
+
+      .cls-2 {
+        fill: #fbfbfb;
+        font-size: 24px;
+        font-family: ArialRoundedMTBold, Arial Rounded MT;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_171" data-name="Group 171" transform="translate(-383 -287)">
+    <g id="Group_82" data-name="Group 82" transform="translate(383 287)">
+      <g id="Ellipse_64" data-name="Ellipse 64" class="cls-1">
+        <circle class="cls-3" cx="18" cy="18" r="18"/>
+        <circle class="cls-4" cx="18" cy="18" r="15.5"/>
+      </g>
+      <text id="_" data-name="?" class="cls-2" transform="translate(11 27)"><tspan x="0" y="0">?</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="130" viewBox="0 0 110 130">
+  <defs>
+    <style>
+      .review-cls-1, .review-cls-2, .review-cls-6 {
+        fill: none;
+      }
+
+      .review-cls-1, .review-cls-2 {
+        stroke: #efb43c;
+      }
+
+      .review-cls-1 {
+        stroke-width: 10px;
+      }
+
+      .review-cls-2 {
+        stroke-width: 8px;
+      }
+
+      .review-cls-3, .review-cls-4 {
+        fill: #efb43c;
+      }
+
+      .review-cls-4 {
+        font-size: 12px;
+        font-family: Montserrat-Bold, Montserrat;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+      }
+
+      .review-cls-5 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_76" data-name="Group 76" transform="translate(-1125 -114)">
+    <g id="Ellipse_65" data-name="Ellipse 65" class="review-cls-1" transform="translate(1125 114)">
+      <circle class="review-cls-5" cx="55" cy="55" r="55"/>
+      <circle class="review-cls-6" cx="55" cy="55" r="50"/>
+    </g>
+    <g id="Ellipse_70" data-name="Ellipse 70" class="review-cls-2" transform="translate(1142.375 159.452) rotate(-45)">
+      <circle class="review-cls-5" cx="20.657" cy="20.657" r="20.657"/>
+      <circle class="review-cls-6" cx="20.657" cy="20.657" r="16.657"/>
+    </g>
+    <rect id="Rectangle_95" data-name="Rectangle 95" class="review-cls-3" width="9.721" height="15.189" rx="4.86" transform="translate(1189.766 184.694) rotate(-45)"/>
+    <rect id="Rectangle_97" data-name="Rectangle 97" class="review-cls-3" width="4.86" height="7.291" rx="2.43" transform="translate(1185.47 176.961) rotate(-45)"/>
+    <text id="REVIEW" class="review-cls-4" transform="translate(1152 241)"><tspan x="0" y="0">REVIEW</tspan></text>
+  </g>
+</svg>

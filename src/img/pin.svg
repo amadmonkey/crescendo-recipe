@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20">
+  <defs>
+    <style>
+      .pin {
+        fill: #707070;
+      }
+    </style>
+  </defs>
+  <path id="Union_9" data-name="Union 9" class="pin" d="M-3353.963-833.161l-1.381-8.839h-4.625a4,4,0,0,1,4-4v-3a3,3,0,0,1-3-3h11a3,3,0,0,1-3,3v3a4,4,0,0,1,4,4h-4.625l-1.381,8.839a.485.485,0,0,1-.493.423A.486.486,0,0,1-3353.963-833.161Z" transform="translate(3359.969 852)"/>
+</svg>

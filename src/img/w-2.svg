@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="109" height="130" viewBox="0 0 109 130">
+  <defs>
+    <style>
+      .questions-cls-1, .questions-cls-5 {
+        fill: none;
+      }
+
+      .questions-cls-1 {
+        stroke: #efb43c;
+        stroke-width: 10px;
+      }
+
+      .questions-cls-2, .questions-cls-3 {
+        fill: #efb43c;
+      }
+
+      .questions-cls-2 {
+        font-size: 73px;
+        font-family: ArialRoundedMTBold, Arial Rounded MT;
+      }
+
+      .questions-cls-3 {
+        font-size: 12px;
+        font-family: Montserrat-Bold, Montserrat;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+      }
+
+      .questions-cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_75" data-name="Group 75" transform="translate(-972 -114)">
+    <g id="Ellipse_64" data-name="Ellipse 64" class="questions-cls-1" transform="translate(972 114)">
+      <ellipse class="questions-cls-4" cx="54.5" cy="55" rx="54.5" ry="55"/>
+      <ellipse class="questions-cls-5" cx="54.5" cy="55" rx="49.5" ry="50"/>
+    </g>
+    <text id="_" data-name="?" class="questions-cls-2" transform="translate(1006 196)"><tspan x="0" y="0">?</tspan></text>
+    <text id="QUESTIONS" class="questions-cls-3" transform="translate(984 241)"><tspan x="0" y="0">QUESTIONS</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+@import '../../variables.scss';
+
+label {
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: $charcoal;
+}
+
+input[type=text],
+input[type=number],
+textarea {
+    background-color: transparent;
+    width: 100%;
+    border:none;
+    color: $primary-darker;
+    border-bottom: 1px solid $text-dark;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: $SemiBold;
+    &.title {
+        font-size: 17px;
+        max-width: 200px;
+        color: $charcoal;
+        border: 2px solid transparent;
+        box-sizing: border-box;
+        &:focus {
+            border: 3px solid $charcoal;
+            border-radius: 10px;
+        }
+    }
+    &.left { text-align: left }
+    &.right { text-align: right }
+}
+
+input {
+    height: 35px;
+}
+
+textarea {
+    resize: none;
+}
+
+.danger {
+    input, textarea {
+        border-color: $danger !important;
+    }
+}
+
+.error-message {
+    font-size: 12px;
+    font-weight: bold;
+    color: $danger;
+    padding: 5px;
+    display: block;
+    margin-top: 5px;
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-5 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #fbfbfb;
+      }
+
+      .cls-1 {
+        stroke-width: 5px;
+      }
+
+      .cls-2 {
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        fill: #fbfbfb;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_94" data-name="Group 94" transform="translate(-1125.128 -114)">
+    <g id="Ellipse_65" data-name="Ellipse 65" class="cls-1" transform="translate(1125.128 114)">
+      <circle class="cls-4" cx="20" cy="20" r="20"/>
+      <circle class="cls-5" cx="20" cy="20" r="17.5"/>
+    </g>
+    <g id="Ellipse_70" data-name="Ellipse 70" class="cls-2" transform="translate(1131.193 132.168) rotate(-45)">
+      <circle class="cls-4" cx="7.466" cy="7.466" r="7.466"/>
+      <circle class="cls-5" cx="7.466" cy="7.466" r="5.466"/>
+    </g>
+    <rect id="Rectangle_95" data-name="Rectangle 95" class="cls-3" width="3.514" height="5.49" rx="1.757" transform="translate(1148.322 139.553) rotate(-45)"/>
+    <rect id="Rectangle_97" data-name="Rectangle 97" class="cls-3" width="1.757" height="2.635" rx="0.878" transform="translate(1146.77 136.758) rotate(-45)"/>
+  </g>
+</svg>

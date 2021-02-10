@@ -1,0 +1,58 @@
+@import '../../variables.scss';
+
+header.main-header {
+    position: relative;
+    z-index: 99;
+}
+
+.bar {
+    height: 60px;
+    width: 100%;
+    background-color: $charcoal;
+    box-shadow: $shadow-default;
+    border-radius: 0 0 40px 40px;
+    position: fixed;
+    padding: 10px 70px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    img {
+        height: 100%;
+    }
+    nav {
+        ul {
+            display: flex;
+            li {
+                padding: 13px 20px;
+                a {
+                    text-decoration: none;
+                    color: $text-light;
+                    font-size: 14px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    letter-spacing: 1px;
+                    span {
+                        display: inline-block;
+                        transform: rotate(90deg);
+                    }
+                    &:hover {
+                        color: $turquoise;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.profile-card-container {
+    transition: 0.3s;
+    width: 350px;
+    right: 30px;
+    position: fixed;
+    top: -350px;
+    &.active {
+        top: 170px;
+    }
+}

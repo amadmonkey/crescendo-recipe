@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+.input-wrapper {
+    label {
+        display: block;
+        font-size: 13px;
+        margin: 5px 0;
+        color: $charcoal;
+    }
+    margin-bottom: 30px;
+}

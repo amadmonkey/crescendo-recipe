@@ -1,0 +1,80 @@
+$primary: #FFC857;
+$primary-dark: #F9C251;
+$primary-darker: #CF9A2E;
+$charcoal: #2E4052;
+$charcoal-dark: #1c2835;
+$turquoise: #BDD9BF;
+$white: #FBFBFB;
+
+$text-dark: #707070;
+$text-light: $white;
+
+$shadow-default: 0 3px 6px #00000040;
+$shadow-offset: -15px 15px 6px #00000040;
+
+$info: #5B8CBC;
+$info-dark: #265c90;
+$success: #33C778;
+$warning: #FFC857;
+$danger: #F65C5C;
+
+$pink: #FF4D80;
+$yellow: #FED766;
+$blue: #2f609c;
+$brown: #F0A868;
+$space_cadet: #1f3269;
+$sky_blue: #52D1DC;
+$ksu_purple: #592E83;
+$red: #F4423C;
+$green: #41e264;
+
+
+$SemiBold: 600;
+
+.bold {
+    font-weight: bold;
+}
+
+.info { color: $info !important }
+.success { color: $success !important }
+.warning { color: $warning !important }
+.danger { color: $danger !important }
+
+.bg-info { background-color: $info !important }
+.bg-success { background-color: $success !important }
+.bg-warning { background-color: $warning !important }
+.bg-danger { background-color: $danger !important }
+
+.spinner {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes slide {
+	0% {transform:translateY(-100%) rotate(90deg);}
+	100% {transform:translateY(100%) rotate(90deg);}
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+:export {
+    turquoise: "#BDD9BF";
+    pink: "#FF4D80";
+    yellow: "#FED766";
+    blue: "#253D5B";
+    brown: "#F0A868";
+    space_cadet: "#2A324B";
+    sky_blue: "#52D1DC";
+    ksu_purple: "#592E83";
+    red: "#F4423C";
+    green: "#84F53D";
+}
