@@ -2,6 +2,7 @@ import React from 'react';
 import './style.scss';
 
 const Input = (props) => {
+    console.log(props.errors);
     return (
         <div style={{ ...props.style }}>
             {

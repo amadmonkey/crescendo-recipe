@@ -5,7 +5,7 @@ import InputWrapper from '../../components/InputWrapper';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
 
-const NewRecipe = () => {
+const NewRecipe = (p) => {
 
     const baseUrl = "http://localhost:3001";
     const history = useHistory();
@@ -17,26 +17,12 @@ const NewRecipe = () => {
     const { register, handleSubmit, errors, control, setValue, getValues, watch } = useForm({ mode: 'onChange' });
     const { fields: ingredientFields, append: ingredientAppend, remove: ingredientRemove } = useFieldArray({ name: iName, control: control });
     const { fields: directionFields, append: directionAppend, remove: directionRemove } = useFieldArray({ name: dName, control: control });
+    const ingredientWatch = watch(iName);
+
+    console.log(errors);
 
     const onSubmit = (data, e) => {
         e.preventDefault();
-        data.postDate = new Date();
-        data.editDate = new Date();
-        delete data[`new-direction-instruction`];
-        delete data[`new-direction-optional`];
-        delete data[`new-ingredient-amount`];
-        delete data[`new-ingredient-measurement`];
-        delete data[`new-ingredient-name`];
-        data.ingredients.map(obj => obj.amount = parseFloat(obj.amount));
-        data = {
-            ...data,
-            cookTime: parseFloat(data.cookTime),
-            prepTime: parseFloat(data.prepTime),
-            servings: parseFloat(data.servings)
-        }
-        data.images = { full: "", medium: "", small: "" }
-        console.log(data);
-
         fetch(`${baseUrl}/recipes`, {
             method: 'post',
             mode: 'cors', // no-cors, *cors, same-origin
@@ -49,12 +35,30 @@ const NewRecipe = () => {
             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify(data)
         }).then((response) => {
-            console.log(response);
             history.push('/');
         }, (error) => {
             console.log(error);
         })
     };
+
+    useEffect(() => {
+        const myFetch = (url) => fetch(url).then(res => res.json()).then(result => result, error => console.log(error));
+        if (p.match.params.id) {
+            myFetch(`${baseUrl}/specials`).then(s => {
+                myFetch(`${baseUrl}/recipes/${p.match.params.id}`).then(recipe => {
+                    recipe.ingredients.map(obj => obj.special = s.filter(sp => sp.ingredientId === obj.uuid)[0])
+                    // setRecipe(recipe);
+                    setValue('title', recipe.title);
+                    setValue('description', recipe.description);
+                    setValue('cookTime', recipe.cookTime);
+                    setValue('prepTime', recipe.prepTime);
+                    setValue('servings', recipe.servings);
+                    setValue(iName, recipe.ingredients);
+                    setValue(dName, recipe.directions);
+                })
+            })
+        }
+    }, [])
 
     let form = {
         title: {
@@ -63,8 +67,7 @@ const NewRecipe = () => {
                 className: '',
             },
             ref: register({
-                required: true,
-                maxLength: 50
+                required: { value: true, message: "Required" }
             }),
             errors: errors.title
         },
@@ -74,8 +77,7 @@ const NewRecipe = () => {
                 className: '',
             },
             ref: register({
-                required: true,
-                maxLength: 50
+                required: { value: true, message: "Required" }
             }),
             errors: errors.description
         },
@@ -86,7 +88,10 @@ const NewRecipe = () => {
             },
             ref: register({
                 required: true,
-                maxLength: 50
+                maxLength: 50,
+                validate: {
+                    positive: value => parseInt(value, 10) > 0
+                }
             }),
             errors: errors.cookTime
         },
@@ -116,7 +121,6 @@ const NewRecipe = () => {
 
     const newIngredientInput = (e, name) => {
         if (getValues(newIngredient.name)) {
-            console.log(getValues(newIngredient.name));
             setToFocus(name);
             ingredientAppend({
                 name: getValues(newIngredient.name),
@@ -127,11 +131,10 @@ const NewRecipe = () => {
     }
 
     const removeIngredient = (i) => {
-        if (!ingredientFields[i].name && !ingredientFields[i].amount && !ingredientFields[i].measurement) {
+        if (!ingredientWatch[i].name && !ingredientWatch[i].amount && !ingredientWatch[i].measurement) {
             ingredientRemove(i);
         }
     }
-
 
     const newDirectionInput = (e, name) => {
         directionAppend({
@@ -140,20 +143,15 @@ const NewRecipe = () => {
         })
     }
 
-    const removeDirection = (i) => {
-
-    }
-
+    const removeDirection = (i) => directionRemove(i);
 
     useEffect(() => {
-        console.log(ingredientFields);
         setValue(newIngredient.name, '');
         setValue(newIngredient.amount, '');
         setValue(newIngredient.measurement, '');
     }, [ingredientFields])
 
     useEffect(() => {
-        console.log(directionFields);
         setValue(newDirection.instructions, '');
     }, [directionFields])
 
@@ -185,9 +183,9 @@ const NewRecipe = () => {
                                     return (
                                         <div className="choice-container" key={field.id}>
                                             <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                                <Input style={{ flexBasis: "65%" }} text attr={{ defaultValue: field.name, name: `${iName}[${i}].name`, autoFocus: toFocus == 1 ? true : false }} register={register({ required: { value: true, message: "required" } })} onChange={(e) => !e.target.value && removeIngredient(i)} />
-                                                <Input style={{ flexBasis: "15%" }} number attr={{ defaultValue: field.amount, name: `${iName}[${i}].amount`, autoFocus: toFocus == 2 ? true : false }} register={register({ required: { value: true, message: "required" } })} onChange={(e) => !e.target.value && removeIngredient(i)} />
-                                                <Input style={{ flexBasis: "15%" }} text attr={{ defaultValue: field.measurement, name: `${iName}[${i}].measurement`, autoFocus: toFocus == 3 ? true : false }} register={register({ required: { value: true, message: "required" } })} onChange={(e) => !e.target.value && removeIngredient(i)} />
+                                                <Input style={{ flexBasis: "65%" }} text attr={{ defaultValue: field.name, name: `${iName}[${i}].name`, autoFocus: toFocus == 1 ? true : false }} register={register({ required: { value: true, message: "Required" } })} onChange={(e) => !e.target.value && removeIngredient(i)} errors={errors && errors[iName] && errors[iName][i].name} />
+                                                <Input style={{ flexBasis: "15%" }} number attr={{ defaultValue: field.amount, name: `${iName}[${i}].amount`, autoFocus: toFocus == 2 ? true : false }} register={register()} onChange={(e) => !e.target.value && removeIngredient(i)} errors={errors && errors[iName] && errors[iName][i].amount} />
+                                                <Input style={{ flexBasis: "15%" }} text attr={{ defaultValue: field.measurement, name: `${iName}[${i}].measurement`, autoFocus: toFocus == 3 ? true : false }} register={register()} onChange={(e) => !e.target.value && removeIngredient(i)} errors={errors && errors[iName] && errors[iName][i].measurement} />
                                             </div>
                                         </div>
                                     )
@@ -195,9 +193,9 @@ const NewRecipe = () => {
                             </div>
                             <div className="choice-container">
                                 <div className={`text ${errors ? 'danger' : ''}`} style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <input style={{ flexBasis: "65%" }} type="text" name={newIngredient.name} placeholder="Enter name" ref={register({ required: { value: ingredientFields.length < 1, message: "required" } })} onChange={(e) => newIngredientInput(e)} />
-                                    <input style={{ flexBasis: "15%" }} type="number" name={newIngredient.amount} placeholder="Enter amount" ref={register({ required: { value: ingredientFields.length < 1, message: "required" } })} />
-                                    <input style={{ flexBasis: "15%" }} type="text" name={newIngredient.measurement} placeholder="Enter measurement" ref={register({ required: { value: ingredientFields.length < 1, message: "required" } })} />
+                                    <input style={{ flexBasis: "65%" }} type="text" name={newIngredient.name} placeholder="Name" ref={register({ required: { value: ingredientFields.length < 1, message: "required" } })} onChange={(e) => newIngredientInput(e)} />
+                                    <input style={{ flexBasis: "15%" }} type="number" name={newIngredient.amount} placeholder="Amount" ref={register()} />
+                                    <input style={{ flexBasis: "15%" }} type="text" name={newIngredient.measurement} placeholder="Measurement" ref={register()} />
                                 </div>
                             </div>
                         </InputWrapper>
@@ -205,9 +203,9 @@ const NewRecipe = () => {
                             {directionFields.map((field, i) => {
                                 return (
                                     <div className="choice-container" key={field.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                        <Input style={{ flexBasis: "75%" }} text attr={{ defaultValue: field.instructions, name: `${dName}[${i}].instructions`, autoFocus: true }} register={register()} onChange={(e) => !e.target.value && removeDirection(i)} />
+                                        <Input style={{ flexBasis: "75%" }} text attr={{ defaultValue: field.instructions, name: `${dName}[${i}].instructions`, autoFocus: true }} register={register()} onChange={(e) => !e.target.value && removeDirection(i)} errors={errors && errors[dName] && errors[dName][i].name} />
                                         <label style={{ flexBasis: "5%" }} htmlFor={newDirection.optional}>Optional</label>
-                                        <input style={{ flexBasis: "10%" }} type="checkbox" ref={register()} name={`${dName}[${i}].optional`} />
+                                        <input style={{ flexBasis: "10%" }} type="checkbox" ref={register()} name={`${dName}[${i}].optional`} defaultChecked={field.optional} />
                                     </div>
                                 )
                             })}

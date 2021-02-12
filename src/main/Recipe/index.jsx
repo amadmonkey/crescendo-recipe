@@ -6,27 +6,24 @@ import PrepTimeSrc from '../../img/cooking-time.svg';
 import ServingsSrc from '../../img/serving-dish.svg';
 import IngredientsSrc from '../../img/ingredients.svg';
 import InstructionsSrc from '../../img/instructions.svg';
-import MeasureSrc from '../../img/scoops.svg';
 
 const Recipe = (props) => {
     let p = props;
     const baseUrl = "http://localhost:3001";
     const [recipe, setRecipe] = useState([]);
-
     const myFetch = (url) => fetch(url).then(res => res.json()).then(result => result, error => console.log(error));
 
     useEffect(() => {
         myFetch(`${baseUrl}/specials`).then(s => {
             myFetch(`${baseUrl}/recipes/${p.match.params.id}`).then(recipe => {
                 recipe.ingredients.map(obj => obj.special = s.filter(sp => sp.ingredientId === obj.uuid)[0])
-                console.log(recipe);
                 setRecipe(recipe);
             })
         })
     }, [])
 
     return recipe && (
-        <Card title={<><img style={{ marginRight: "5px" }} src={RecipeSrc} /> {recipe.title}</>}>
+        <Card title={<><img style={{ marginRight: "5px" }} src={RecipeSrc} /> {recipe.title}</>} link={{ label: "Update", to: `/update/${p.match.params.id}` }}>
             <div className="recipe-content">
                 <div className="img-container">
                     <div className="img">

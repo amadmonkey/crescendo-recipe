@@ -17,19 +17,25 @@ const routes = {
         label: "Home",
         path: "/",
         component: Home,
-        exact: true,
+        exact: true
     }),
     recipe: new Route({
         label: "Recipe",
         path: "/recipe/:id",
         component: Recipe,
-        exact: false,
+        exact: true
+    }),
+    update_recipe: new Route({
+        label: "Recipe",
+        path: "/update/:id",
+        component: NewRecipe,
+        exact: true
     }),
     new_recipe: new Route({
         label: "New Recipe",
         path: "/new-recipe",
         component: NewRecipe,
-        exact: true,
+        exact: true
     })
 }
 

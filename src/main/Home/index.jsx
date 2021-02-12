@@ -21,7 +21,6 @@ const Home = () => {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     setRecipesList(result);
                 },
                 (error) => {
@@ -30,13 +29,31 @@ const Home = () => {
             )
     }, [])
 
+    const deletMePles = (index) => {
+        var confirmDelete = window.confirm("Are you sure you want to delete?");
+        if (confirmDelete == true) {
+            fetch(`${baseUrl}/recipes/${recipesList[index].uuid}`, {
+                method: "delete",
+                headers: { 'Content-Type': 'application/json' },
+            }).then(res => res.json())
+                .then(
+                    (result) => {
+                        setRecipesList(recipesList.filter((_, i) => i !== index));
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                )
+        }
+    }
+
     return (
         <>
             <div className="recipes-list">
                 {
                     recipesList.map((obj, i) => {
                         return (
-                            <Card key={`${obj.uuid}-${i}`} title={<><img style={{ marginRight: "5px" }} src={RecipeSrc} /> {obj.title}</>} link={{ label: "View", to: `/recipe/${obj.uuid}` }}>
+                            <Card key={`${obj.uuid}-${i}`} index={i} title={<><img style={{ marginRight: "5px" }} src={RecipeSrc} /> {obj.title}</>} showMore link={{ label: "View", to: `/recipe/${obj.uuid}` }} delete={deletMePles}>
                                 <div className="recipe-content mini">
                                     <div className="img-container">
                                         <div className="img">

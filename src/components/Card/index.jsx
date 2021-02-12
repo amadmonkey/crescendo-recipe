@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as ArrowDown } from '../../img/arrow-down.svg';
-import { ReactComponent as Spinner } from '../../img/spinner.svg';
+import { ReactComponent as Times } from '../../img/times.svg';
+import Tooltip from '../Tooltip';
 import './style.scss';
 
 const Card = (props) => {
+
     const [loading, setLoading] = useState(false);
     let title = props.title;
 
@@ -26,11 +27,9 @@ const Card = (props) => {
             {
                 props.showMore &&
                 <footer>
-                    {
-                        loading ?
-                            <button className="loading" onClick={() => setLoading(!loading)}><Spinner className="spinner" aria-disabled /></button> :
-                            <button onClick={() => setLoading(!loading)}><ArrowDown /></button>
-                    }
+                    <Tooltip label="Delete" dark>
+                        <button onClick={() => props.delete(props.index)} className="bg-danger"><Times /></button>
+                    </Tooltip>
                 </footer>
             }
         </div >
